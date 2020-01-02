@@ -12,4 +12,36 @@ router.post('/createEvent', (req, res) => {
   });
 });
 
+router.get('/all', (req, res) => {
+  eventController.getAllEvents((err, response) => {
+    if(err) {
+      res.send(err);
+      return;
+    }
+    res.send(response);
+  });
+});
+
+router.get('/eventsByTour', (req, res) => {
+  const tourIdData = req.body;
+  eventController.getEventsByTourId(tourIdData, (err, response) => {
+    if(err) {
+      res.send(err);
+      return;
+    }
+    res.send(response);
+  });
+});
+
+router.get('/eventsByTeam', (req, res) => {
+  const teamIdData = req.body;
+  eventController.getEventsByTeamId(teamIdData, (err, response) => {
+    if(err) {
+      res.send(err);
+      return;
+    }
+    res.send(response);
+  });
+});
+
 module.exports = router;
