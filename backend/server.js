@@ -2,7 +2,8 @@ const express = require('express');
 var cors = require('cors');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
-// const Data = require('./data');
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swaggerDoc.json');
 require('./mongoConnection');
 const api = require('./api');
 
@@ -19,6 +20,7 @@ app.use(logger('dev'));
 
 // append /api for our http requests
 app.use('/api', api);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // launch our backend into a port
 app.listen(API_PORT, () => console.log(`LISTENING ON PORT ${API_PORT}`));

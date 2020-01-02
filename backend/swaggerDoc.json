@@ -1,0 +1,32 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Bet-on App APIs"
+  },
+  "paths": {
+    "/api/users/getUser": {
+      "get": {
+        "summary": "Fetches the user object by User ID",
+        "requestBody": {
+          "description": "Mongo User ID",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "{}"
+              },
+              "example": {
+                "_id": "1234567890adsd"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  }
+}
