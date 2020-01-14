@@ -13,6 +13,22 @@ const createTeam = async (teamData, done) => {
   done(null, team);
 };
 
+const searchTeam = async (teamSearchTerm, done) => {
+  await TeamModal.find({
+    "name": {
+      $regex: teamSearchTerm,
+      $options: "i"
+    }
+  }).then((err, docs) => {
+    if(err) {
+      done(err);
+      return;
+    }
+    done(null, docs);
+  });
+};
+
 module.exports = {
-  createTeam
+  createTeam,
+  searchTeam
 }

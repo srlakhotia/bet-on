@@ -30,4 +30,8 @@ const schema = mongoose.Schema({
   }
 }, {collection: 'team'});
 
+schema.index({
+  name: 'text'
+});
+
 module.exports = mongoose.model('team', schema);

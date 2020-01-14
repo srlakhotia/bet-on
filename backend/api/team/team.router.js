@@ -12,4 +12,15 @@ router.post('/createTeam', (req, res) => {
   });
 });
 
+router.get('/searchTeam', (req, res) => {
+  const teamSearchTerm = req.query.q;
+  teamController.searchTeam(teamSearchTerm, (err, response) => {
+    if(err) {
+      res.send(err);
+      return;
+    }
+    res.send(response);
+  });
+});
+
 module.exports = router;
