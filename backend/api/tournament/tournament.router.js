@@ -23,4 +23,15 @@ router.get('/getTour/:tourId', (req, res) => {
   });
 });
 
+router.get('/searchTour', (req, res) => {
+  const teamSearchTerm = req.query.q;
+  tourController.searchTournament(teamSearchTerm, (err, response) => {
+    if(err) {
+      res.send(err);
+      return;
+    }
+    res.send(response);
+  });
+});
+
 module.exports = router;

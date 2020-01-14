@@ -21,9 +21,25 @@ const getTour = async (tourId, done) => {
   } else {
     done(null, tourData);
   }
-}
+};
+
+const searchTournament = async (tourSearchTerm, done) => {
+  await TourModal.find({
+    "name": {
+      $regex: tourSearchTerm,
+      $options: "i"
+    }
+  }).then((err, docs) => {
+    if(err) {
+      done(err);
+      return;
+    }
+    done(null, docs);
+  });
+};
 
 module.exports = {
   createTour,
+  searchTournament,
   getTour
 }
