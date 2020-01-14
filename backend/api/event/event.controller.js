@@ -15,13 +15,13 @@ const getAllEvents = done => {
   eventService.getAllEvents(done);
 };
 
-const getEventsByTourId = (tourData, done) => {
-  const tourID = mongoose.Types.ObjectId(tourData.tourID);
+const getEventsByTourId = (tourID, done) => {
+  tourID = mongoose.Types.ObjectId(tourID);
   eventService.getEventsByTourId(tourID, done);
 };
 
-const getEventsByTeamId = (teamData, done) => {
-  const teamID = mongoose.Types.ObjectId(teamData.teamID);
+const getEventsByTeamId = (teamID, done) => {
+  teamID = mongoose.Types.ObjectId(teamID);
   eventService.getEventsByTeamId(teamID, done);
 };
 

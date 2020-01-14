@@ -1,8 +1,8 @@
 const router = require('express').Router();
 const usersController = require('./users.controller');
 
-router.get('/getUser', (req, res) => {
-  const data = req.body;
+router.get('/getUser/:userId', (req, res) => {
+  const data = req.params.userId;
   usersController.getUser(data, (err, response) => {
     if(err) {
       res.send(err);
@@ -23,7 +23,7 @@ router.post('/registerUser', (req, res) => {
   });
 });
 
-router.get('/login', (req, res) => {
+router.post('/login', (req, res) => {
   const userData = req.body;
   usersController.loginUser(userData, (err, response) => {
     if(err) {

@@ -22,8 +22,8 @@ router.get('/all', (req, res) => {
   });
 });
 
-router.get('/eventsByTour', (req, res) => {
-  const tourIdData = req.body;
+router.get('/eventsByTour/:tourId', (req, res) => {
+  const tourIdData = req.params.tourId;
   eventController.getEventsByTourId(tourIdData, (err, response) => {
     if(err) {
       res.send(err);
@@ -33,8 +33,8 @@ router.get('/eventsByTour', (req, res) => {
   });
 });
 
-router.get('/eventsByTeam', (req, res) => {
-  const teamIdData = req.body;
+router.get('/eventsByTeam/:teamId', (req, res) => {
+  const teamIdData = req.params.teamId;
   eventController.getEventsByTeamId(teamIdData, (err, response) => {
     if(err) {
       res.send(err);

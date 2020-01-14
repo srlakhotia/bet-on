@@ -13,8 +13,7 @@ const createTour = async (tourData, done) => {
   done(null, tour);
 }
 
-const getTour = async (data, done) => {
-  const tourId = data._id;
+const getTour = async (tourId, done) => {
   let tourData = await TourModal.findById(tourId);
   
   if(!tourData) {

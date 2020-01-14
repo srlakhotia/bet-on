@@ -2,7 +2,7 @@ const UserModal = require('./users.entity').User;
 const bcrypt = require('bcrypt');
 
 const getUser = async (data, done) => {
-  const userId = data._id;
+  const userId = data;
   let userData = await UserModal.findById(userId);
   
   if(!userData) {

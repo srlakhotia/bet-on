@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const tourController = require('./tournament.service');
+const tourController = require('./tournament.controller');
 
 router.post('/createTour', (req, res) => {
   const tourData = req.body;
@@ -12,8 +12,8 @@ router.post('/createTour', (req, res) => {
   })
 });
 
-router.get('/getTour', (req, res) => {
-  const tourData = req.body;
+router.get('/getTour/:tourId', (req, res) => {
+  const tourData = req.params.tourId;
   tourController.getTour(tourData, (err, response) => {
     if(err) {
       res.send(err);
